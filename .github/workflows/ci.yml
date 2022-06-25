@@ -30,5 +30,9 @@ jobs:
       
       - name: make lmp
         run: |
-          go build -o lmp main.go
+          cd eBPF_Visualization/eBPF_server
+          make all
+          cd ../../eBPF_Supermarket/sidecar
+          go build -v ./...
+          go test -v ./...
 
