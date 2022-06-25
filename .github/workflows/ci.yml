@@ -33,6 +33,20 @@ jobs:
           cd eBPF_Visualization/eBPF_server
           make all
           cd ../../eBPF_Supermarket/sidecar
-          go build -v ./...
-          go test -v ./...
+  
+  build_sidecar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Test
+        run: go test -v ./...
 
